@@ -1,7 +1,8 @@
 ﻿@inherits UserClaimsBase
 <AuthorizeView>
     <h4>
-       @context.User.Identity.Name has successfully signed-in
+       @*@context.User.Identity.Name has successfully signed-in*@
+       @_name has successfully signed-in
     </h4>
     Claims from the ID token
     <table class="table">
@@ -21,4 +22,10 @@
             }
         </tbody>
     </table>
+ @*   <div>
+        @foreach (var claim in @context.User.Claims)
+        {
+            <p>@claim.Type : @claim.Value</p>
+        }
+    </div>*@
 </AuthorizeView>

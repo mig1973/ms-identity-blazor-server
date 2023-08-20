@@ -19,6 +19,7 @@ namespace blazorserver_singleOrg.Pages
 
         protected string _authMessage;
         protected IEnumerable<Claim> _claims = Enumerable.Empty<Claim>();
+        protected string _name = string.Empty;
 
         // Defines list of claim types that will be displayed after successfull sign-in.
         private string[] printClaims = { "name", "preferred_username", "tid", "oid" };
@@ -47,6 +48,8 @@ namespace blazorserver_singleOrg.Pages
                 // Sets the claims value in _claims variable.
                 // The claims mentioned in printClaims variable are selected only.
                 _claims = user.Claims.Where(x => printClaims.Contains(x.Type));
+
+                _name = _claims.FirstOrDefault(x => x.Type == "name").Value;
             }
             else
             {
